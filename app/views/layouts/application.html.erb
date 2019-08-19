@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SurveyApp</title>
+    <title>Survey</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,16 +12,14 @@
   <body>
     <%= render "layouts/header" %>
 
-    <div class="container">
+    <div id="content" class="container">
       <%= yield %>
+    </div>
+
+    <div id="notifications">
+      <% if notice || alert %>
+        <%= render "layouts/notifications" %>
+      <% end %>
     </div>
   </body>
 </html>
-
-<script>
-  <% if notice || alert %>
-    $(document).ready(function(){
-      M.toast({html: '<%= notice || alert %>'})
-    })
-  <% end %>
-</script>

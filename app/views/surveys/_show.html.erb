@@ -1,0 +1,13 @@
+<h1><%= survey.title %></h1>
+
+<p><b>By <%= survey.user.email %>.</b></p>
+
+<% if submitted?(survey) %>
+  <h4>You have submitted this survey.</h4>
+  <%= render partial: 'aggregrate', locals: {survey: survey} %>
+<% else %>
+  <h4>You have not submitted this survey!</h4>
+  <p>Please complete the survey to see aggregrate results.</p>
+
+  <%= render partial: 'questions', locals: {survey: survey} %>
+<% end %>

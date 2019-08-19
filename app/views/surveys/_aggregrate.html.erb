@@ -1,0 +1,30 @@
+<% aggregrates = survey.aggregrates %>
+<% total_submissions = survey.submissions.length %>
+
+<% survey.questions.each_with_index do |question, q_i| %>
+  <div class="card">
+    <span class="card-title"><%= question %></span>
+    <table class="striped centered">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Submissions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% survey.options[q_i].each_with_index do |option, o_i| %>
+          <tr>
+            <% value = aggregrates[q_i][o_i] %>
+            <td><%= option %></td>
+            <td><%= value %>
+              <div class="progress">
+                <div class="determinate" style="width: <%= 100*value/total_submissions %>%">
+                </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

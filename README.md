@@ -16,9 +16,9 @@ A survey application for creating and answering simple mutliple choice questions
 
 - [x] Setup Materialize
 - [x] Setup Devise
-- [ ] Generate model
-- [ ] Create seed data
-- [ ] Answer flow
+- [x] Generate model
+- [x] Create seed data
+- [x] Answer flow
 - [ ] Creating surveys
 - [ ] Authorization for surveys
 

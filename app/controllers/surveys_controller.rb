@@ -1,10 +1,10 @@
 class SurveysController < ApplicationController
-  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  before_action :set_survey, only: [:show, :edit, :update, :destroy, :submission]
 
   # GET /surveys
   # GET /surveys.json
   def index
-    @surveys = Survey.all
+    @surveys = Survey.all.includes(:users, :submissions)
   end
 
   # GET /surveys/1
@@ -61,14 +61,28 @@ class SurveysController < ApplicationController
     end
   end
 
+  def submission
+    if submitted_options.length == @survey.questions.length
+      @survey.submit(current_user.id, submitted_options)
+      flash[:notice] = 'Survey submitted successfully!'
+    else
+      flash[:notice] = 'Some options have not been filled!'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_survey
       @survey = Survey.find(params[:id])
     end
-
+ 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
       params.require(:survey).permit(:access, :questions, :start_date, :end_date, :user_id)
+    end
+
+    def submitted_options
+      permitted_questions = [*0..@survey.questions.length].map! { |x| x.to_s }
+      params.permit(permitted_questions).values
     end
 end

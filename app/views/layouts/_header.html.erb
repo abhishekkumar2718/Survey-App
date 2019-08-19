@@ -3,6 +3,7 @@
   <%= link_to 'Survey', root_path, class: 'brand-logo' %>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <% if user_signed_in? %>
+        <li><%= link_to 'Home', surveys_path %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to 'Login', new_user_session_path %></li>

@@ -1,0 +1,26 @@
+<%# Materialize-CSS Styles hideously with rails form. I realize how bad this hack is. %>
+<form action='<%= submission_survey_path(survey) %>' accept-charset="UTF-8" data-remote="true" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <% survey.questions.each_with_index do |question, index| %>
+    <div class="card">
+      <span class="card-title"><%= question %></span>
+      <% survey.options[index].each_with_index do |option, i| %>
+        <p>
+          <label>
+            <% if params[index.to_s] == i.to_s %>
+              <input name="<%= index %>" value="<%= i %>" type="radio" checked/>
+            <% else %>
+              <input name="<%= index %>" value="<%= i %>" type="radio" />
+            <% end %>
+            <span><%= option %>
+          </label>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <center>
+    <input class="btn waves-effect waves-light" type="submit" name="action" value="Submit">
+  </center>
+</form>
