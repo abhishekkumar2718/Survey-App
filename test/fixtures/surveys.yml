@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  access: 1
+  questions: MyString
+  start_date: 2019-08-19
+  end_date: 2019-08-19
+  user: one
+
+two:
+  access: 1
+  questions: MyString
+  start_date: 2019-08-19
+  end_date: 2019-08-19
+  user: two
