@@ -29,11 +29,9 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if @survey.save
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
-        format.json { render :show, status: :created, location: @survey }
+        format.html { redirect_to @survey, notice: 'Survey was succesfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -90,7 +88,15 @@ class SurveysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
-      params.require(:survey).permit(:access, :questions, :start_date, :end_date, :user_id)
+      permitted_params = params.permit(:closed, :title, questions: [], options: {})
+
+      {
+        title: params[:title],
+        closed: params[:closed] == 'on',
+        user_id: current_user.id,
+        questions: permitted_params[:questions].select { |q| q.present? },
+        options: permitted_params[:options].values
+      }
     end
 
     def submitted_options

@@ -1,42 +1,38 @@
-<%= form_with(model: survey, local: true) do |form| %>
-  <% if survey.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+<form action='<%= surveys_path %>' accept-charset="UTF-8" data-remote="true" method="post">
+  <div class="input-field">
+    <label for="title">Title</label>
+    <input id="title" type="text" name="title"/>
+  </div>
 
-      <ul>
-      <% survey.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <div class="switch">
+    <label>
+      Public
+      <input name="closed" type="checkbox">
+      <span class="lever"></span>
+      Private
+    </label>
+  </div>
+
+  <% 5.times do |i| %>
+    <div>
+      <br/>
+      <div class="question input-field">
+        <label for="question_<%= i %>">Question <%= i + 1 %></label>
+        <input id="question_<%= i %>" type="text" name="questions[]"/>
+      </div>
+
+      <p>Options</p>
+      <% 3.times do |j| %>
+        <div class="option input-field">
+          <input type="text" placeholder="Option <%= j + 1 %>" name="options[<%= i %>][]"/>
+        </div>
       <% end %>
-      </ul>
     </div>
   <% end %>
+  <center>
+    <input class="btn waves-effect waves-light" type="submit" name="action" value="Submit">
+  </center>
+</form>
 
-  <div class="field">
-    <%= form.label :access %>
-    <%= form.number_field :access %>
-  </div>
-
-  <div class="field">
-    <%= form.label :questions %>
-    <%= form.text_field :questions %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<script>
+</script>
