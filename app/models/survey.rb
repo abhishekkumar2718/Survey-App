@@ -4,6 +4,11 @@ class Survey < ApplicationRecord
   has_many :permissions
   has_many :users, through: :permissions
 
+  scope :permitted, lambda { |user_id|
+    permitted_ids = Permission.where(user_id: user_id).pluck(:survey_id)
+    where(closed: false).or(where(user_id: user_id)).or(where(id: permitted_ids))
+  }
+
   def self.seed(count, titles, questions, options, closed: false)
     user_ids = User.ids
     count.times do |i|
@@ -22,8 +27,8 @@ class Survey < ApplicationRecord
     Permission.create(user_id: user.id, survey_id: id) if user
   end
 
-  def permitted?(email)
-    !closed ||users.find_by(email: email) || (user.email == email)
+  def permitted?(user_id)
+    !closed || users.find_by(id: user_id) || (user.id == id)
   end
 
   def submitted?(user_id)

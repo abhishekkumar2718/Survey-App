@@ -1,6 +1,6 @@
 # Survey App
 
-A Full Stack Web Application created during [Web Club NITK Googe DSC Recruitments 2019].
+A Full Stack Web Application created as part of [Web Club NITK Googe DSC Recruitments 2019](https://github.com/WebClub-NITK/Google-DSC-NITK-Recruitments-2019/blob/master/RECRUITMENTS_2019.md).
 
 `Task ID: Survey_App`
 
@@ -33,7 +33,7 @@ A survey application for creating and answering simple mutliple choice questions
 - [x] Create seed data
 - [x] Answer flow
 - [x] Host on Heroku
-- [ ] Authorization for surveys
+- [x] Authorization for surveys
 - [ ] Creating surveys
 - [ ] Improvements to UX
 

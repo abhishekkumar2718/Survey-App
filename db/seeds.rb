@@ -72,6 +72,7 @@ private_survey = Survey.create(
   title: titles[n_open],
   questions: questions[n_open],
   options: options[n_open]
+  closed: true
 )
 
 puts 'Created Surveys'

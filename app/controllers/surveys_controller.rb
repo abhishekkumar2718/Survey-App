@@ -1,10 +1,11 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy, :submission]
+  before_action :authorize, only: [:show, :edit, :update, :destroy]
 
   # GET /surveys
   # GET /surveys.json
   def index
-    @surveys = Survey.all.includes(:users, :submissions)
+    @surveys = Survey.permitted(current_user.id).includes(:users, :submissions)
   end
 
   # GET /surveys/1
@@ -73,9 +74,20 @@ class SurveysController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_survey
-      @survey = Survey.find(params[:id])
+      @survey = Survey.find_by(id: params[:id])
+      unless @survey
+        flash[:notice] = 'The resource does not exist!'
+        redirect_to surveys_path
+      end
     end
- 
+
+    def authorize
+      unless @survey.permitted?(current_user.id)
+        flash[:notice] = 'The resource does not exist!'
+        redirect_to surveys_path
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
       params.require(:survey).permit(:access, :questions, :start_date, :end_date, :user_id)
