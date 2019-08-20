@@ -8,9 +8,16 @@ A survey application for creating and answering simple mutliple choice questions
 
 ## Screenshots
 
+![Log in page](/screenshots/login.png)
+![Index](/screenshots/index.png)
+![Options not filled](/screenshots/options_not_filled.png)
+![Aggegrates](/screenshots/aggregrates.png)
+
 ## Features Implemented
 
 - Authentication
+- Answering survey
+- Aggregrate results
 
 ## Milestons
 
