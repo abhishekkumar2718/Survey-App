@@ -28,7 +28,7 @@ class Survey < ApplicationRecord
   end
 
   def permitted?(user_id)
-    !closed || users.find_by(id: user_id) || (user.id == id)
+    !closed || users.find_by(id: user_id) || (self.user_id == user_id)
   end
 
   def submitted?(user_id)
