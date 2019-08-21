@@ -94,7 +94,7 @@ class SurveysController < ApplicationController
         title: params[:title],
         closed: params[:closed] == 'on',
         user_id: current_user.id,
-        questions: permitted_params[:questions].select { |q| q.present? },
+        questions: permitted_params[:questions],
         options: permitted_params[:options].values
       }
     end

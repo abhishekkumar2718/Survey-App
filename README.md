@@ -24,6 +24,8 @@ A survey application for creating and answering simple mutliple choice questions
 - Authentication
 - Answering survey
 - Aggregrate results
+- Authorization for surveys
+- Creating Surveys
 
 ## Milestons
 
@@ -34,10 +36,10 @@ A survey application for creating and answering simple mutliple choice questions
 - [x] Answer flow
 - [x] Host on Heroku
 - [x] Authorization for surveys
-- [ ] Creating surveys
+- [x] Creating surveys
 - [ ] Improvements to UX
 
 ## Possible Extensions
 
 - Comment Chains
-- Deadline for surveys
+- Time bound surveys

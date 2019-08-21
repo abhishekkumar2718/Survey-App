@@ -13,26 +13,58 @@
     </label>
   </div>
 
-  <% 5.times do |i| %>
-    <div>
-      <br/>
-      <div class="question input-field">
-        <label for="question_<%= i %>">Question <%= i + 1 %></label>
-        <input id="question_<%= i %>" type="text" name="questions[]"/>
-      </div>
-
-      <p>Options</p>
-      <% 3.times do |j| %>
-        <div class="option input-field">
-          <input type="text" placeholder="Option <%= j + 1 %>" name="options[<%= i %>][]"/>
+  <div id='question_group'>
+    <% 5.times do |i| %>
+      <div id="question_group_<%= i %>">
+        <br/>
+        <div class="question input-field">
+          <label for="question_<%= i %>">Question <%= i + 1 %></label>
+          <input id="question_<%= i %>" type="text" name="questions[]"/>
         </div>
-      <% end %>
-    </div>
-  <% end %>
+
+        <p>Options</p>
+        <div id="options_group_<%= i %>">
+          <% 3.times do |j| %>
+            <div class="option input-field">
+              <input type="text" placeholder="Option <%= j + 1 %>" name="options[<%= i %>][]"/>
+            </div>
+          <% end %>
+        </div>
+
+        <div>
+          <a class="waves-effect waves-light btn" onclick="add_option(<%= i %>)">Add Option</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <br/>
+    <a class="waves-effect waves-light btn" onclick="add_question()">Add Question</a>
+  </div>
+
   <center>
     <input class="btn waves-effect waves-light" type="submit" name="action" value="Submit">
   </center>
 </form>
 
 <script>
+  n_questions = 5;
+
+function add_option(i){
+  element = $("#options_group_" + i);
+  element.append("<div class='option input-field'><input type='text' placeholder='Option " + (element.children().length + 1) + "' name='options[" + i + "][]'></div>");
+}
+
+function add_question(){
+  html = "<div id='question_group_" + n_questions + "'><br/><div class='question input-field'><label for='question_" + n_questions + "'>Question " + (n_questions + 1) + "</label><input id='question_" + n_questions + "' type='text' name='questions[]'></div><p>Options</p><div id='options_group_" + n_questions + "'></div>"
+  add_option_btn = "<div><a class='waves-effect waves-light btn' onclick='add_option(" + n_questions + ")'>Add Option</a></div>"
+  element = $("#question_group");
+  element.append(html);
+  add_option(n_questions);
+  add_option(n_questions);
+  add_option(n_questions);
+  $("#question_group_" + n_questions).append(add_option_btn);
+  n_questions++;
+  }
 </script>
