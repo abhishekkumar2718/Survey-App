@@ -1,0 +1,9 @@
+<h4>Invite</h4>
+
+<form action='<%= invite_survey_path(survey) %>' accept-charset="UTF-8" data-remote="true" method="post">
+  <div class="input-field">
+    <label for="invite">Invite People (by e-mail)</label>
+    <input id="invite" type="text" name="email">
+  </div>
+  <input class="btn waves-effect waves-light" type="submit" name="action" value="Invite">
+</form>

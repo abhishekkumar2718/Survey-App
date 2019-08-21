@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :surveys do
     member do
       post 'submission'
+      post 'invite'
     end
   end
   devise_for :users

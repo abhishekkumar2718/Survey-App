@@ -2,6 +2,10 @@
 
 <p><b>By <%= survey.user.email %>.</b></p>
 
+<% if survey.closed && survey.creator?(current_user.id) %>
+  <%= render partial: 'invite', locals: {survey: survey} %>
+<% end %>
+
 <% if submitted?(survey) %>
   <h4>You have submitted this survey.</h4>
   <%= render partial: 'aggregrate', locals: {survey: survey} %>

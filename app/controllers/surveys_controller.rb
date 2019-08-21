@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :set_survey, only: [:show, :edit, :update, :destroy, :submission]
+  before_action :set_survey, only: [:show, :edit, :update, :destroy, :submission, :invite]
   before_action :authorize, only: [:show, :edit, :update, :destroy]
 
   # GET /surveys
@@ -66,6 +66,21 @@ class SurveysController < ApplicationController
       flash[:notice] = 'Survey submitted successfully!'
     else
       flash[:notice] = 'Some options have not been filled!'
+    end
+  end
+
+  def invite
+    email = params[:email]
+    user = User.find_by(email: email)
+    if user
+      if @survey.permitted?(user.id)
+        flash[:notice] = 'User already has permissions to the survey!'
+      else
+        @survey.permit(user.id)
+        flash[:notice] = 'User invited'
+      end
+    else
+      flash[:notice] = 'User not found'
     end
   end
 

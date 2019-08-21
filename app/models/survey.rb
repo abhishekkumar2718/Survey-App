@@ -43,6 +43,10 @@ class Survey < ApplicationRecord
     options.map { |option| option.length() }
   end
 
+  def creator?(user_id)
+    self.user_id == user_id
+  end
+
   def aggregrates
     value_counts = []
 
