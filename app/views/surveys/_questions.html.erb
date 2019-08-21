@@ -1,4 +1,5 @@
 <%# Materialize-CSS Styles hideously with rails form. I realize how bad this hack is. %>
+<br/>
 <form action='<%= submission_survey_path(survey) %>' accept-charset="UTF-8" data-remote="true" method="post">
   <input name="utf8" type="hidden" value="✓">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">

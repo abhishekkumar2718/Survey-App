@@ -7,11 +7,15 @@
 <% end %>
 
 <% if submitted?(survey) %>
-  <h4>You have submitted this survey.</h4>
-  <%= render partial: 'aggregrate', locals: {survey: survey} %>
+  <h4>Results</h4>
+  <p>You have completed the survey.</p>
+
+  <%= link_to 'See results', results_survey_path(survey), remote: true, class: 'btn waves-effect waves-light', method: :post %>
+  <div id="results"></div>
 <% else %>
-  <h4>You have not submitted this survey!</h4>
+  <h4>Submit Survey</h4>
   <p>Please complete the survey to see aggregrate results.</p>
 
-  <%= render partial: 'questions', locals: {survey: survey} %>
+  <%= link_to 'Start the survey' , questions_survey_path(survey), remote: true, class: 'btn waves-effect waves-light', method: :post %>
+  <div id="questionnaire"></div>
 <% end %>

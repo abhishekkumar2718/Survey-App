@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     member do
       post 'submission'
       post 'invite'
+      post 'results'
+      post 'questions'
     end
   end
   devise_for :users

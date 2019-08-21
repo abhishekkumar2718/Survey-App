@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :set_survey, only: [:show, :edit, :update, :destroy, :submission, :invite]
+  before_action :set_survey, only: [:show, :edit, :update, :destroy, :submission, :invite, :questions, :results]
   before_action :authorize, only: [:show, :edit, :update, :destroy]
 
   # GET /surveys
@@ -82,6 +82,13 @@ class SurveysController < ApplicationController
     else
       flash[:notice] = 'User not found'
     end
+  end
+
+  def questions
+    flash[:notice] = "Survey loaded"
+  end
+
+  def results
   end
 
   private
