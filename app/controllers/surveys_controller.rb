@@ -89,6 +89,7 @@ class SurveysController < ApplicationController
   end
 
   def results
+    flash[:notice] = "Results loaded"
   end
 
   private

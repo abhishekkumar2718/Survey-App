@@ -17,7 +17,10 @@ A survey application for creating and answering simple mutliple choice questions
 ![Log in page](/screenshots/login.png)
 ![Index](/screenshots/index.png)
 ![Options not filled](/screenshots/options_not_filled.png)
-![Aggegrates](/screenshots/aggregrates.png)
+![Invite](/screenshots/invite.png)
+![Show](/screenshots/show.png)
+![Load results](/screenshots/load_result.png)
+![Load Survey](/screenshots/load_survey.png)
 
 ## Features Implemented
 
