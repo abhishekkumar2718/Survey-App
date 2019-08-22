@@ -30,7 +30,45 @@ A survey application for creating and answering simple mutliple choice questions
 - Authorization for surveys
 - Creating Surveys
 
-## Milestons
+## Installation
+
+#### 1. Install and configure Postgresql
+
+The application uses Postgresql to maintain compatablity with Heroku.
+
+[Instructions for Ubuntu]()
+
+#### 2. Clone the repository and change directory 
+
+`git clone https://github.com/abhishekkumar2718/Survey-App; cd Survey-App`
+
+#### 3. Install required gems
+
+Gems are the ruby equivalent of third party libraries.
+
+**Optional**: Install RVM (an environment manager for ruby) and create a gemset. [Read more here]()
+
+Install Bundler (a package manager for ruby gems)
+
+`gem install bundler`
+
+Install required gems.
+
+`bundle install`
+
+#### 4. Set up the database
+
+This command creates the database, the tables and sets up the neccesary data seed.
+
+`rails db:setup`
+
+#### 5. Run your server
+
+The application has been installed and can be used. Use the following command to run the server.
+
+`rails s`
+
+## Milestones
 
 - [x] Setup Materialize
 - [x] Setup Devise
