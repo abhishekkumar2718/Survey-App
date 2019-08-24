@@ -3,12 +3,23 @@
   <%= link_to 'Survey', root_path, class: 'brand-logo' %>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <% if user_signed_in? %>
-        <li><%= link_to 'Home', surveys_path %></li>
-        <li><%= link_to 'Create a survey', new_survey_path %></li>
+        <% unless (current_page? surveys_path) || (current_page? root_path) %>
+          <li><%= link_to 'Home', surveys_path %></li>
+        <% end %>
+
+        <% unless current_page? new_survey_path %>
+          <li><%= link_to 'Create a survey', new_survey_path %></li>
+        <% end %>
+
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to 'Login', new_user_session_path %></li>
-        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <% unless current_page? new_user_session_path %>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
+
+        <% unless current_page? new_user_registration_path %>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
