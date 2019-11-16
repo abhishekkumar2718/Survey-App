@@ -6,12 +6,7 @@ A Full Stack Web Application created as part of [Web Club NITK Googe DSC Recruit
 
 A survey application for creating and answering simple mutliple choice questions.
 
-## Demonstration
-
-1. Open the [demonstration](https://ancient-scrubland-76328.herokuapp.com/).
-2. Create an account using sign up.
-3. Fill any of the surveys to see their result.
-
+> I had to remove heroku instances since I had reached 5 apps limit. Please check out instructions for running this application locally below.
 ## Screenshots
 
 ![Log in page](/screenshots/login.png)
